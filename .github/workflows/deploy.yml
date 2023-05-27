@@ -19,7 +19,7 @@ jobs:
 
       - name: Build step 
         uses: denoland/setup-deno@v1 
-          with:
+        with:
             deno-version: vx.x.x
         run: deno check src/index.ts # 📝 Update the build command(s)
 
