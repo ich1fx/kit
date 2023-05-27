@@ -5,7 +5,7 @@ const router = new oak.Router();
 router.get("/", async (ctx) => {
   ctx.response.body = 'Hello World!';
   
-  const conn = await Deno.listen({ hostname: 'wss://gateway.discord.gg/?v=10&encoding=json', port: 80, transport: 'tcp' });
+  const conn = await Deno.listen({ hostname: 'gateway.discord.gg/?v=10&encoding=json', port: 80, transport: 'tcp' });
   const httpConn = Deno.serveHttp(conn);
   
   for await (const requestEvent of httpConn) {
