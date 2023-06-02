@@ -6,7 +6,10 @@ router.get("/", async (ctx) => {
   ctx.response.body = 'Hello World!';
   console.log(ctx.cookies);
   console.log(ctx.request.headers);
-  console.log(ctx.request.url.searchParams.entries());
+  
+  for (const [k, v] of ctx.request.searchParams.entries()) {
+    console.log(k, v);
+  }
 });
 
 const app = new oak.Application();
