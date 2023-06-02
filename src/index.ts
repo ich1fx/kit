@@ -5,8 +5,7 @@ const router = new oak.Router();
 router.get("/", async (ctx) => {
   ctx.response.body = 'Hello World!';
   
-  const { canvas } = await import("./deps.ts");
-  console.log(canvas);
+  console.log(ctx.request.headers);
 });
 
 const app = new oak.Application();
