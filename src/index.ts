@@ -7,7 +7,7 @@ router.get("/", async (ctx) => {
   console.log(ctx.cookies);
   console.log(ctx.request.headers);
   
-  for (const [k, v] of ctx.request.searchParams.entries()) {
+  for (const [k, v] of ctx.request.url.searchParams.entries()) {
     console.log(k, v);
   }
 });
