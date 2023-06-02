@@ -3,10 +3,8 @@ import { oak } from './deps.ts';
 const router = new oak.Router();
 
 router.get("/", async (ctx) => {
-  // ctx.response.body = 'Hello World!';
-  
-  console.log(ctx.request.headers.get('Referer'));
-  ctx.response.redirect(oak.REDIRECT_BACK);
+  ctx.response.body = 'Hello World!';
+  console.log(localStorage);
 });
 
 const app = new oak.Application();
