@@ -8,8 +8,8 @@ router.get("/", async (ctx) => {
   const dir = Deno.readDirSync(Deno.cwd());
   console.log(Array.from(dir));
   
-  Promise.all([import('./deps.ts')])
-    .then(console.log)
+  const imported = await Promise.all(Array.from(Deno.readDirSync(Deno.cwd())).filter(file => file.name.endsWith('.ts')).map(file => import(file.name)));
+  console.log(imported);
 });
 
 const app = new oak.Application({
