@@ -7,7 +7,7 @@ router.get("/", async (ctx) => {
   
   const dir = Array.from(Deno.readDirSync(Deno.cwd() + '/src'))
     .filter(file => file.name.endsWith('.ts'));
-  Promise.all(dir.map(file => import(file)))
+  Promise.all(dir.map(file => import(`./${file.name}`)))
     .then(console.log);
 });
 
