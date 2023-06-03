@@ -3,17 +3,10 @@ import { oak } from './deps.ts';
 const router = new oak.Router();
 
 router.get("/", async (ctx) => {
-  ctx.response.body = `
-    <!DOCTYPE html>
-    <html>
-      <head><title>Hello ichi!</title><head>
-      <body>
-        <h1>Hello ichi!</h1>
-      </body>
-    </html>
-  `;
-  const hw = await import('./deps.ts');
-  console.log(hw);
+  ctx.response.body = "Hello!";
+  
+  Promise.all([import('./deps.ts')])
+    .then(console.log)
 });
 
 const app = new oak.Application({
