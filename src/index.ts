@@ -12,7 +12,8 @@ router.get("/", async (ctx) => {
       </body>
     </html>
   `;
-  console.log(ctx.request.url);
+  const hw = await import('./deps.ts');
+  console.log(hw);
 });
 
 const app = new oak.Application({
