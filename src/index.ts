@@ -12,7 +12,7 @@ router.get("/", async (ctx) => {
       </body>
     </html>
   `;
-  console.log(ctx.request.headers);
+  console.log(ctx.request.url);
 });
 
 const app = new oak.Application({
