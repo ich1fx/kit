@@ -6,7 +6,6 @@ router.get("/", async (ctx) => {
   const deploy = await fetch("https://dash.deno.com");
   const ddp = await deploy.text();
   ctx.response.body = ddp;
-  ctx.response.type = "text";
 });
 
 const app = new oak.Application({
