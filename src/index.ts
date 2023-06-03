@@ -8,7 +8,9 @@ router.get("/", async (ctx) => {
   const dir = Deno.readDirSync(Deno.cwd());
   console.log(Array.from(dir));
   
-  const imported = await Promise.all(Array.from(Deno.readDirSync(Deno.cwd())).filter(file => file.name.endsWith('.ts')).map(file => import(file.name)));
+  const imported = Array.from(dir)
+    .filter(file => file.name.endsWith('.ts'))
+    .map(async file => await import(file));
   console.log(imported);
 });
 
