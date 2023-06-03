@@ -5,13 +5,10 @@ const router = new oak.Router();
 router.get("/", async (ctx) => {
   ctx.response.body = "Hello!";
   
-  const dir = Deno.readDirSync(Deno.cwd() + '/src');
-  console.log(Array.from(dir));
-  
-  const imported = Array.from(dir)
-    .filter(file => file.name.endsWith('.ts'))
-    .map(async file => await import(file));
-  console.log(imported);
+  const dir = Array.from(Deno.readDirSync(Deno.cwd() + '/src'))
+    .filter(file => file.name.endsWith('.ts'));
+  Promise.all(dir.map(file => import(file)))
+    .then(console.log);
 });
 
 const app = new oak.Application({
