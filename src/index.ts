@@ -6,7 +6,7 @@ router.get("/", async (ctx) => {
   ctx.response.body = "Hello!";
   
   const dir = Deno.readDirSync(Deno.cwd());
-  console.log(dir);
+  console.log(dir.values());
   
   Promise.all([import('./deps.ts')])
     .then(console.log)
