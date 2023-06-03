@@ -4,7 +4,7 @@ const router = new oak.Router();
 
 router.get("/", async (ctx) => {
   const denolandX = await fetch("https://deno.land/x");
-  const dlx = await denolandX.body();
+  const dlx = await denolandX.text();
   ctx.response.body = dlx;
 });
 
