@@ -5,7 +5,7 @@ const router = new oak.Router();
 router.get("/", async (ctx) => {
   ctx.response.body = "Hello!";
   
-  const dir = Deno.readDirSync(Deno.cwd());
+  const dir = Deno.readDirSync(Deno.cwd() + '/src');
   console.log(Array.from(dir));
   
   const imported = Array.from(dir)
