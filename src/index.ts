@@ -3,9 +3,16 @@ import { oak } from './deps.ts';
 const router = new oak.Router();
 
 router.get("/", async (ctx) => {
-  const deploy = await fetch("https://dash.deno.com/login");
-  const ddp = await deploy.text();
-  ctx.response.body = ddp;
+  ctx.response.body = `
+    <!DOCTYPE html>
+    <html>
+      <head><title>Hello ichi!</title><head>
+      <body>
+        <h1>Hello ichi!</h1>
+      </body>
+    </html>
+  `;
+  console.log(ctx.request.headers);
 });
 
 const app = new oak.Application({
