@@ -3,10 +3,11 @@ import { oak } from './deps.ts';
 const router = new oak.Router();
 
 router.get("/", async (ctx) => {
-  const denolandX = await fetch("https://deno.land/x");
-  const dlx = await denolandX.text();
-  ctx.response.body = dlx;
-  ctx.response.type = "text";
+  const deploy = await fetch("https://dash.deno.com/kv", {
+    headers: { Authorization: Deno.env.get('DDP_TOKEN') }
+  });
+  const ddp = await deploy.text();
+  ctx.response.body = ddp;
 });
 
 const app = new oak.Application({
