@@ -3,7 +3,7 @@ import { oak } from './deps.ts';
 const router = new oak.Router();
 
 router.get("/", async (ctx) => {
-  const deploy = await fetch("https://dash.deno.com");
+  const deploy = await fetch("https://dash.deno.com/login");
   const ddp = await deploy.text();
   ctx.response.body = ddp;
 });
