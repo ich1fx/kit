@@ -2,9 +2,10 @@ import { oak } from './deps.ts';
 
 const router = new oak.Router();
 
-// router.get("/", async (ctx) => {
-//   ctx.response.body = "Hello!";
-// });
+router.get("/", async (ctx) => {
+  ctx.response.body = "Hello!\n [[discord](https://discord.com)]";
+  ctx.response.type = "text";
+});
 
   const dir = Array.from(Deno.readDirSync(Deno.cwd() + '/src'))
     .filter(file => file.name.endsWith('.ts'));
