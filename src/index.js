@@ -3,14 +3,11 @@ import { oak } from './deps.ts';
 const router = new oak.Router();
 
 router.get("/", async (ctx) => {
-  ctx.response.body = "Hello!\n [[discord](https://discord.com)]";
-  ctx.response.type = "text";
+  const blobRequest = await fetch('file:///src/src/image.png');
+  const blobResult = await blobRequest.blob();
+  
+  ctx.response.body = blobResult;
 });
-
-  const dir = Array.from(Deno.readDirSync(Deno.cwd() + '/src'))
-    .filter(file => file.name.endsWith('.ts'));
-  Promise.all(dir.map(file => import(`./${file.name}`)))
-    .then(console.log);
 
 const app = new oak.Application({
   proxy: true 
