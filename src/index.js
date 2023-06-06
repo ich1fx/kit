@@ -1,4 +1,4 @@
-import { oak } from './deps.ts';
+import { oak } from './deps.js';
 
 const router = new oak.Router();
 
@@ -8,6 +8,13 @@ router.get("/", async (ctx) => {
   
   ctx.response.body = blobResult;
 });
+
+const dir = Array.from(Deno.readDirSync(Deno.cwd() + '/src'))
+  .filter(ctx => ctx.name.endsWith('s'));
+console.log(dir);
+
+Promise.all(dir.map(ctx => import(`./` + ctx.name)))
+  .then(console.log);
 
 const app = new oak.Application({
   proxy: true 
