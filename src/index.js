@@ -9,9 +9,6 @@ router.get("/", async (ctx) => {
   ctx.response.body = blobResult;
 });
 
-const dir = Array.from(Deno.readDir('/src/src'));
-console.log(dir);
-
 const app = new oak.Application({
   proxy: true 
 });
