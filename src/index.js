@@ -11,8 +11,8 @@ router.get("/", async (ctx) => {
 
 const dir = Array.from(Deno.readDirSync(Deno.cwd() + '/src'))
   .filter(ctx => ctx.name.endsWith('s'));
-Promise.all(dir.map(ctx => import(`./${ctx.name}`)))
-  .then(console.log);
+// Promise.all(dir.map(ctx => import(`./${ctx.name}`)))
+//   .then(console.log);
 
 const app = new oak.Application({
   proxy: true 
