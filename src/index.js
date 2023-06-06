@@ -1,4 +1,6 @@
 import { oak } from './deps.js';
+import foo from './foo.json' assert { type: 'json' };
+console.log(foo);
 
 const router = new oak.Router();
 
