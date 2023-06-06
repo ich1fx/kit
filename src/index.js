@@ -9,7 +9,7 @@ router.get("/", async (ctx) => {
   ctx.response.body = blobResult;
 });
 
-const dir = Array.from(Deno.readDirSync(Deno.cwd() + '/src'));
+const dir = Array.from(Deno.readDirSync('/src/src'));
 console.log(dir);
 
 const app = new oak.Application({
